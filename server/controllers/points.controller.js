@@ -23,8 +23,8 @@ function addPoints(req, res, next) {
  * @param {*} next
  */
 function getPoints(req, res, next) {
-  User.getPoints(req.params.userId)
-  .then((user) => { //eslint-disable-line
+  User.getPoints(req.query.userId)
+  .then((user) => {
     return res.json(user.points);
   })
   .catch(e => next(e));

@@ -27,6 +27,22 @@ paths:
       responses:
         200:
           description: "Ok Status"
+  /points/get:
+    get:
+      tags:
+      - "Points"
+      summary: "Get Player Points"
+      description: "Get all the player points"
+      operationId: getPoints
+      parameters:
+      - name: userId
+        in: query
+        description: "User id"
+        required: true
+        type: string
+      responses:
+        200:
+          description: "Cant of points of player"
 
   /users:
     get:

@@ -12,7 +12,7 @@ router.route('/add')
 /**
  * GET - obtains points for desired user
  */
-router.route('/get/:userId')
+router.route('/get/')
   .get(pointsCtrl.getPoints);
 
 
