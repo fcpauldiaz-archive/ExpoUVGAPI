@@ -8,7 +8,7 @@ import User from '../models/user.model';
  * @param {*} next
  */
 function addPoints(req, res, next) {
-  User.addPoints(req.body.id)
+  User.addPoints(req.body.userId)
   .then((user) => {
     user.save();
     res.send('OK');
@@ -23,7 +23,7 @@ function addPoints(req, res, next) {
  * @param {*} next
  */
 function getPoints(req, res, next) {
-  User.getPoints(req.body.id)
+  User.getPoints(req.params.userId)
   .then((user) => { //eslint-disable-line
     return res.json(user.points);
   })

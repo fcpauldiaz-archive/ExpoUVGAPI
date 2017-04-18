@@ -29,7 +29,84 @@ paths:
           description: "Unexpected error"
           schema:
             $ref: "#/definitions/Error"
-      x-swagger-router-controller: "Products"
+    post:
+      tags:
+      - "Users"
+      summary: "Create New User"
+      description: "Creates a new user object"
+      operationId: "createUser"
+      parameters:
+      - name: "username"
+        in: "body"
+        description: "username of user."
+        required: true
+        type: "string"
+        schema:
+          $ref: "#/definitions/User"
+
+      responses:
+        200:
+          description: "User created"
+          schema:
+            type: "User"
+            items:
+              $ref: "#/definitions/User"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+
+  /users/userId:
+    get:
+      tags:
+      - "Users"
+      summary: "Get One User"
+      description: "Return a User"
+      operationId: "userId"
+      parameters:
+      - name: "userId"
+        in: "query"
+        description: "User mongo identifier."
+        required: true
+        type: "string"
+        format: "ObjectId"
+      responses:
+        200:
+          description: "An array of users"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+    delete:
+      tags:
+      - "Users"
+      summary: "Deletes one User"
+      description: "Delete user"
+      operationId: "deleteUser"
+      parameters:
+      - name: "userId"
+        in: "query"
+        description: "User mongo identifier."
+        required: true
+        type: "string"
+        format: "ObjectId"
+      responses:
+        200:
+          description: "The deleted user"
+          schema:
+            type: "User"
+            items:
+              $ref: "#/definitions/User"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+
+
 definitions:
   User:
     type: "object"
