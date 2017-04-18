@@ -30,7 +30,7 @@ const options = {
 };
 const app = express();
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, true, options));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, true, options));
 
 
 if (config.env === 'development') {
