@@ -11,19 +11,14 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  mobileNumber: {
-    type: String,
-    required: true,
-    match: [/^[1-9][0-9]{9}$/, 'The value of path {PATH} ({VALUE}) is not a valid mobile number.']
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
   points: {
     type: Number,
     required: false,
     default: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
 
@@ -61,27 +56,28 @@ UserSchema.statics = {
       });
   },
 
-  getPoints(id){
+  getPoints(id) {
     return this.findById(id)
-    .exec()
-    .then((user) => {
-      if (user){
-        return user.points;
+      .exec()
+      .then((user) => {
+        if (user) {
+          return user;
+        }
         const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
         return Promise.reject(err);
-      }
-    });
+      });
   },
 
-  addPoints(id){
+  addPoints(id) {
     return this.findById(id)
     .exec()
     .then((user) => {
-      if (user){
-        user.points += 1;
-        const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
-        return Promise.reject(err);
+      if (user) {
+        user.points += 1; // eslint-disable-line no-param-reassign
+        return user;
       }
+      const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
+      return Promise.reject(err);
     });
   },
   /**
