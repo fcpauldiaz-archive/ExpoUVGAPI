@@ -19,6 +19,11 @@ const UserSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  points: {
+    type: Number,
+    required: false,
+    default: 0
   }
 });
 
@@ -56,6 +61,29 @@ UserSchema.statics = {
       });
   },
 
+  getPoints(id){
+    return this.findById(id)
+    .exec()
+    .then((user) => {
+      if (user){
+        return user.points;
+        const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
+        return Promise.reject(err);
+      }
+    });
+  },
+
+  addPoints(id){
+    return this.findById(id)
+    .exec()
+    .then((user) => {
+      if (user){
+        user.points += 1;
+        const err = new APIError('No such user exists!', httpStatus.NOT_FOUND);
+        return Promise.reject(err);
+      }
+    });
+  },
   /**
    * List users in descending order of 'createdAt' timestamp.
    * @param {number} skip - Number of users to be skipped.
