@@ -20,17 +20,10 @@ import APIError from '../server/helpers/APIError';
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 const spec = fs.readFileSync('server/docs/api_docs.yml', 'utf8');
 const swaggerDoc = jsyaml.safeLoad(spec);
-const options = {
-  basePath: 'test',
-  apiVersion: '1.0',
-  info: {
-    title: 'swagger-express sample app',
-    description: 'Swagger + Express = {swagger-express}'
-  },
-};
+
 const app = express();
 
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, true, options));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, false));
 
 
 if (config.env === 'development') {
