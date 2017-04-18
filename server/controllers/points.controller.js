@@ -49,4 +49,4 @@ function getUsersPoints(req, res, next) {
   .catch(e => next(e));
 }
 
-export default { addPoints, getPoints };
+export default { addPoints, getPoints, getUsersPoints };
