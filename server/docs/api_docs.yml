@@ -42,7 +42,17 @@ paths:
         type: string
       responses:
         200:
-          description: "Cant of points of player"
+          description: "Cont of points of player"
+  /points/get/all:
+    get:
+      tags:
+      - "Points"
+      summary: "Get Players Points"
+      description: "Get all the players points"
+      operationId: getUsersPoints
+      responses:
+        200:
+          description: "Cont of all players points"
 
   /users:
     get:
