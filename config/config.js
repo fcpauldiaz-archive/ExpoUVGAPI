@@ -37,8 +37,8 @@ const config = {
   jwtSecret: envVars.JWT_SECRET,
   mongo: {
     host: envVars.MONGO_HOST,
-    port: envVars.MONGO_PORT
-    uir: envVars.MONGODB_URI
+    port: envVars.MONGO_PORT,
+    uri: envVars.MONGODB_URI
   }
 };
 
