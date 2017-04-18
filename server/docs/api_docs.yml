@@ -11,6 +11,23 @@ schemes:
 produces:
 - "application/json"
 paths:
+  /points/add:
+    post:
+      tags:
+      - "Points"
+      summary: "Points management"
+      description: "Add one point to user"
+      operationId: "addPoints"
+      parameters:
+      - name: "userId"
+        in: "body"
+        description: "User Id to add 1 point."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Ok Status"
+
   /users:
     get:
       tags:
