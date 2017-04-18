@@ -15,5 +15,11 @@ router.route('/add')
 router.route('/get/')
   .get(pointsCtrl.getPoints);
 
+/**
+ * GET - get all the users with points
+ */
+router.route('/get/all')
+  .get(pointsCtrl.getUsersPoints);
+
 
 export default router;

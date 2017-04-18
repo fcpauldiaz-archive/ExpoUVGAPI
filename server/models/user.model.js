@@ -91,7 +91,10 @@ UserSchema.statics = {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
-      .exec();
+      .exec()
+      .then((users) => {
+        return users;
+      });
   }
 };
 

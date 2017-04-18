@@ -30,4 +30,23 @@ function getPoints(req, res, next) {
   .catch(e => next(e));
 }
 
+/**
+ *
+ * @param {*} request
+ * @param {*} response: Json with all users
+ * @param {*} next
+ */
+function getUsersPoints(req, res, next) {
+  const filter = {
+    skip: 0,
+    limit: 500
+  };
+
+  User.list(filter)
+  .then((users) => {
+    return res.json(users);
+  })
+  .catch(e => next(e));
+}
+
 export default { addPoints, getPoints };
