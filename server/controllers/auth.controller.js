@@ -23,9 +23,8 @@ const login = (req, res, next) => {
     const token = jwt.sign({
       username: user.username,
       test: 'hola'
-    }, config.jwtSecretPrivate, {
-      expiresIn: '30 days',
-      algorithm: 'RS256'
+    }, config.jwtSecret, {
+      expiresIn: '30 days'
     });
     return res.json({
       token,
